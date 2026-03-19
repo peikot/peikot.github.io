@@ -1,0 +1,42 @@
+name: Päivitä jäsenmäärä
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Hae jäsenmäärä Apps Scriptistä
+        id: fetch
+        run: |
+          MAARA=$(curl -sL "https://script.google.com/macros/s/AKfycbxe5zT0oY_1dgBaQ8CPJgdIB0oJ7sqiXNlC4tZwMvCW9GUK5bniqYM-hsTlI0c_pLhf/exec" | jq -r '.jasenmaara')
+          if [[ "$MAARA" =~ ^[0-9]+$ ]]; then
+            echo "maara=$MAARA" >> $GITHUB_OUTPUT
+          else
+            echo "Virheellinen jäsenmäärä: $MAARA" && exit 1
+          fi
+
+      - name: Päivitä index.html ja config.json
+        run: |
+          MAARA=${{ steps.fetch.outputs.maara }}
+          sed -i "s/data-maara=\"[0-9]*\"/data-maara=\"$MAARA\"/g" index.html
+          echo "{ \"jasenmaara\": $MAARA }" > config.json
+
+      - name: Commitoi muutokset jos tarpeen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet && git diff --staged --quiet || (
+            git add index.html config.json &&
+            git commit -m "Päivitä jäsenmäärä: ${{ steps.fetch.outputs.maara }}"
+          )
+
+      - name: Push
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main

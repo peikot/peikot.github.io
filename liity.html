@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liity jäseneksi — Vuoreksen Peikot ry</title>
+  <meta name="description" content="Liity Vuoreksen Peikot ry:n jäseneksi.">
+  <meta property="og:title" content="Liity jäseneksi — Vuoreksen Peikot ry">
+  <meta property="og:description" content="Liity Vuoreksen Peikot ry:n jäseneksi.">
+  <meta property="og:image" content="https://vuoreksenpeikot.fi/img/logo.webp">
+  <meta property="og:url" content="https://vuoreksenpeikot.fi/liity.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+  <link rel="icon" href="img/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="img/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="container page-hero-content">
+      <h1>Liity jäseneksi</h1>
+      <p>Tule mukaan vuoreslaiseen urheiluyhteisöön!</p>
+    </div>
+  </section>
+
+  <!-- JÄSENYYSTYYPIT -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Jäsenyysvaihtoehdot</h2>
+        <p class="section-subtitle">Valitse sinulle sopiva jäsenyystyyppi.</p>
+      </div>
+
+      <div class="membership-grid">
+        <div class="membership-card">
+          <div class="membership-card-header">
+            <h3>Varsinainen jäsen</h3>
+            <div class="membership-card-price">10 € <span>/ vuosi</span></div>
+          </div>
+          <div class="membership-card-body">
+            <ul>
+              <li>Osallistumismahdollisuus jäsentoimintaan *</li>
+              <li>Äänioikeus seuran kokouksissa</li>
+              <li>Jäsenedut yhteistyökumppaneilta</li>
+              <li>Pääsy jäsenten WhatsApp-yhteisöön</li>
+            </ul>
+            <a href="#hakemus" class="btn btn-primary btn-block">Hae varsinaiseksi jäseneksi</a>
+          </div>
+        </div>
+
+        <div class="membership-card featured">
+          <div class="membership-card-header">
+            <h3>Kannatusjäsen</h3>
+            <div class="membership-card-price">50 € <span>/ vuosi</span></div>
+          </div>
+          <div class="membership-card-body">
+            <ul>
+              <li>Osallistumismahdollisuus jäsentoimintaan *</li>
+              <li>Seuran toiminnan taloudellinen tukeminen</li>
+              <li>Näkyvyys seuran kanavilla halutessaan</li>
+              <li>Pääsy jäsenten WhatsApp-yhteisöön</li>
+            </ul>
+            <a href="#hakemus" class="btn btn-outline-green btn-block">Hae kannatusjäseneksi</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="membership-footnote">* Salivuokraa edellyttävissä lajeissa peritään jäsenmaksun lisäksi osallistumismaksu kauden ajalta. Esimerkiksi sählyssä ja futsalissa osallistumismaksu on ollut noin 30 € kaudelta (marraskuu–maaliskuu) kaudella 2025–2026. Osallistumismaksulla voidaan myös kattaa vuokrien lisäksi yhteisiä pelivälineitä.</p>
+
+      <!-- Jäsenhakemuslomake -->
+      <div id="hakemus" class="form-section">
+        <h2>Jäsenhakemus</h2>
+        <p>Täytä alla oleva hakemus. Otamme sinuun yhteyttä sähköpostitse hakemuksen käsittelyn jälkeen.</p>
+
+        <div id="lomake-container">
+          <form id="liittymislomake">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nimi">Nimi *</label>
+                <input type="text" id="nimi" name="nimi" placeholder="Etunimi Sukunimi" required>
+              </div>
+              <div class="form-group">
+                <label for="kotipaikka">Kotipaikka *</label>
+                <input type="text" id="kotipaikka" name="kotipaikka" placeholder="Esim. Tampere tai Lempäälä" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Sähköpostiosoite *</label>
+              <input type="email" id="email" name="email" placeholder="nimi@esimerkki.fi" required>
+            </div>
+
+            <div class="form-group">
+              <label>Jäsentyyppi *</label>
+              <div class="form-choice-group">
+                <label class="form-choice">
+                  <input type="radio" name="jasenyystyyppi" value="Varsinainen jäsen (10 €/vuosi)" required>
+                  Varsinainen jäsen (10 €/vuosi)
+                </label>
+                <label class="form-choice">
+                  <input type="radio" name="jasenyystyyppi" value="Kannatusjäsen (50 €/vuosi)">
+                  Kannatusjäsen (50 €/vuosi)
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="lisatiedot">Lisätiedot</label>
+              <textarea id="lisatiedot" name="lisatiedot" placeholder="Esim. kiinnostavat lajit, maalivahtina oleminen..."></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" id="laheta-btn" class="btn btn-primary">Lähetä hakemus →</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Maksutiedot -->
+        <div class="payment-box">
+          <h3>Maksutiedot</h3>
+          <p>Maksa jäsenmaksu MobilePay:llä tai tilisiirrolla. Tilisiirrossa käytä maksun viestinä nimeäsi.</p>
+
+          <div class="payment-columns">
+            <!-- Tilisiirto -->
+            <div class="payment-col">
+              <p class="payment-col-label">Tilisiirto</p>
+              <div class="payment-item">
+                <label>Saaja</label>
+                <span>Vuoreksen Peikot ry</span>
+              </div>
+              <div class="payment-item">
+                <label>IBAN</label>
+                <span>FI54 5730 0821 6270 11</span>
+              </div>
+              <div class="payment-item">
+                <label>Viesti</label>
+                <span>Oma nimesi</span>
+              </div>
+            </div>
+
+            <!-- MobilePay -->
+            <div class="payment-col payment-col-mobilepay">
+              <a href="https://qr.mobilepay.fi/vp/E3s6ohSnM" target="_blank" rel="noopener">
+                <img src="img/mobilepay-qr.webp" alt="MobilePay QR-koodi — Vuoreksen Peikot ry #35962">
+              </a>
+              <span class="payment-mobilepay-code">#35962</span>
+              <a href="https://qr.mobilepay.fi/vp/E3s6ohSnM" target="_blank" rel="noopener" class="payment-mobilepay-btn">
+                Maksa MobilePay:llä →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script data-goatcounter="https://peikot.goatcounter.com/count"
+          async src="js/count.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Vaihda tähän Apps Script web-appin URL julkaisun jälkeen
+    var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxe5zT0oY_1dgBaQ8CPJgdIB0oJ7sqiXNlC4tZwMvCW9GUK5bniqYM-hsTlI0c_pLhf/exec';
+
+    document.getElementById('liittymislomake').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var btn = document.getElementById('laheta-btn');
+      btn.disabled = true;
+      btn.textContent = 'Lähetetään…';
+
+      var formData = new FormData(this);
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(formData)
+      })
+        .then(function () {
+          document.getElementById('lomake-container').innerHTML =
+            '<div class="info-box info-box--success">' +
+            '<strong>Hakemus lähetetty!</strong><br>' +
+            'Kiitos hakemuksestasi. Otamme sinuun yhteyttä pian. ' +
+            'Muista vielä maksaa jäsenmaksu yllä olevilla tiedoilla. ' +
+            'Jos et saa vahvistusviestiä kahden päivän sisällä, ota yhteyttä: ' +
+            '<a href="mailto:info@vuoreksenpeikot.fi">info@vuoreksenpeikot.fi</a>' +
+            '</div>';
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = 'Lähetä hakemus →';
+          alert('Lomakkeen lähetyksessä tapahtui virhe. Yritä uudelleen tai ota yhteyttä osoitteeseen info@vuoreksenpeikot.fi');
+        });
+    });
+  </script>
+</body>
+</html>

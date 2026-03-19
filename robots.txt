@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vuoreksenpeikot.fi/sitemap.xml
