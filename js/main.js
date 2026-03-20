@@ -346,6 +346,67 @@
         avaaModaali(kalenteriTapahtumat[parseInt(this.dataset.idx)]);
       });
     });
+
+    renderAgenda();
+  }
+
+  var VP_LYHYT = ['su','ma','ti','ke','to','pe','la'];
+
+  function renderAgenda() {
+    var agendaEl = document.getElementById('cal-agenda');
+    if (!agendaEl) return;
+
+    var vuosi = kalenteriKuukausi.getFullYear();
+    var kk = kalenteriKuukausi.getMonth();
+    var tana = new Date();
+
+    var kkTapahtumat = kalenteriTapahtumat.filter(function(t) {
+      var d = new Date(t.alkaa);
+      return d.getFullYear() === vuosi && d.getMonth() === kk;
+    }).sort(function(a, b) { return new Date(a.alkaa) - new Date(b.alkaa); });
+
+    if (!kkTapahtumat.length) {
+      agendaEl.innerHTML = '<div class="cal-agenda-empty">Ei tapahtumia tässä kuussa.</div>';
+      return;
+    }
+
+    var paivat = {};
+    kkTapahtumat.forEach(function(t) {
+      var d = new Date(t.alkaa);
+      var avain = d.getDate();
+      if (!paivat[avain]) paivat[avain] = [];
+      paivat[avain].push(t);
+    });
+
+    var html = '';
+    Object.keys(paivat).sort(function(a, b) { return a - b; }).forEach(function(p) {
+      var d = new Date(vuosi, kk, p);
+      var onTana = tana.getFullYear() === vuosi && tana.getMonth() === kk && tana.getDate() === +p;
+      html += '<div class="cal-agenda-day' + (onTana ? ' cal-agenda-today' : '') + '">';
+      html += '<div class="cal-agenda-date">' + VP_LYHYT[d.getDay()] + ' ' + p + '.' + (kk + 1) + '.</div>';
+
+      paivat[p].forEach(function(t) {
+        var alkaa = new Date(t.alkaa);
+        var klo = alkaa.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' });
+        html += '<button class="cal-agenda-event cal-agenda-event-' + escapeHtml(t.laji) + '" data-idx="' + kalenteriTapahtumat.indexOf(t) + '">';
+        html += '<span class="cal-agenda-time">' + klo + '</span>';
+        html += '<span class="cal-agenda-info">';
+        html += '<span class="cal-agenda-title">' + escapeHtml(t.otsikko) + '</span>';
+        if (t.paikka) html += '<span class="cal-agenda-location">' + escapeHtml(t.paikka) + '</span>';
+        html += '</span>';
+        html += '</button>';
+      });
+
+      html += '</div>';
+    });
+
+    agendaEl.innerHTML = html;
+
+    agendaEl.querySelectorAll('.cal-agenda-event').forEach(function(el) {
+      el.addEventListener('click', function() {
+        avaaModaali(kalenteriTapahtumat[parseInt(this.dataset.idx)]);
+      });
+    });
   }
 
   // Hae kalenteridata (etusivu: seuraava + mittari)
@@ -380,6 +441,20 @@
       kalenteriKuukausi.setMonth(kalenteriKuukausi.getMonth() + 1);
       renderKuukausi();
     });
+
+    // Näkymävaihto: ruudukko ↔ agenda
+    var toggleBtn = document.getElementById('cal-view-toggle');
+    if (toggleBtn) {
+      var eventList = document.getElementById('event-list');
+      if (localStorage.getItem('peikot_cal_view') === 'agenda') {
+        eventList.classList.add('cal-view-agenda');
+      }
+      toggleBtn.addEventListener('click', function() {
+        eventList.classList.toggle('cal-view-agenda');
+        var isAgenda = eventList.classList.contains('cal-view-agenda');
+        localStorage.setItem('peikot_cal_view', isAgenda ? 'agenda' : 'grid');
+      });
+    }
 
     // Siivoa vanhat menneet-välimuistit
     Object.keys(localStorage).forEach(function(k) {

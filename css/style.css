@@ -622,6 +622,7 @@ body.nav-open .nav-mobile { display: block; }
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 12px;
 }
+.cal-header-right { display: flex; align-items: center; gap: 8px; }
 .cal-month-title {
   font-family: var(--font-display); font-size: 1.4rem;
   letter-spacing: .06em; color: var(--green-dark);
@@ -633,6 +634,17 @@ body.nav-open .nav-mobile { display: block; }
   justify-content: center; transition: all var(--transition);
 }
 .cal-nav-btn:hover { background: var(--green); color: var(--white); }
+
+.cal-view-toggle {
+  background: none; border: 2px solid var(--green); color: var(--green);
+  border-radius: 50%; width: 36px; height: 36px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition); padding: 0;
+}
+.cal-view-toggle:hover { background: var(--green); color: var(--white); }
+.cal-toggle-icon-grid { display: none; }
+.cal-view-agenda .cal-toggle-icon-agenda { display: none; }
+.cal-view-agenda .cal-toggle-icon-grid { display: block; }
 
 .cal-weekdays {
   display: grid; grid-template-columns: repeat(7, 1fr);
@@ -709,18 +721,67 @@ body.nav-open .nav-mobile { display: block; }
 .calendar-subscribe { display: flex; gap: 12px; flex-wrap: wrap; }
 .calendar-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
 
+/* Agenda — piilossa oletuksena, näkyvillä toggle- tai mobiilitilassa */
+.cal-agenda { display: none; }
+.cal-view-agenda .cal-weekdays,
+.cal-view-agenda .cal-days { display: none; }
+.cal-view-agenda .cal-agenda { display: block; }
+
+.cal-agenda-empty {
+  text-align: center; padding: 40px 16px;
+  color: var(--gray); font-size: .95rem;
+}
+
+.cal-agenda-day { margin-bottom: 6px; }
+
+.cal-agenda-date {
+  font-size: .78rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--gray); padding: 10px 0 4px;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.cal-agenda-today .cal-agenda-date {
+  color: var(--green); border-color: var(--green);
+}
+
+.cal-agenda-event {
+  display: flex; align-items: flex-start; gap: 12px;
+  width: 100%; background: var(--white); border: 1px solid var(--gray-light);
+  border-left: 4px solid var(--green); border-radius: 6px;
+  padding: 10px 12px; margin-top: 6px; cursor: pointer;
+  text-align: left; font-family: inherit; font-size: inherit;
+  transition: box-shadow var(--transition);
+}
+.cal-agenda-event:active { box-shadow: var(--shadow); }
+
+.cal-agenda-event-sahly  { border-left-color: var(--color-sahly); }
+.cal-agenda-event-futsal { border-left-color: var(--color-futsal); }
+.cal-agenda-event-harrastefutsal { border-left-color: var(--color-harrastefutsal); }
+.cal-agenda-event-padel  { border-left-color: var(--color-padel); }
+.cal-agenda-event-futis  { border-left-color: var(--color-futis); }
+
+.cal-agenda-time {
+  flex-shrink: 0; font-size: .82rem; font-weight: 700;
+  color: var(--text); min-width: 44px;
+}
+
+.cal-agenda-info { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+
+.cal-agenda-title {
+  font-size: .88rem; font-weight: 600; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.cal-agenda-location {
+  font-size: .78rem; color: var(--gray);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cal-agenda-location::before { content: '📍 '; }
+
 @media (max-width: 600px) {
-  .cal-day { min-height: 52px; padding: 4px 3px; }
-  .cal-event-text { display: none; }
-  .cal-event {
-    width: 8px; height: 8px; border-radius: 50%;
-    padding: 0; display: inline-block; margin-right: 2px; margin-bottom: 0;
-    position: relative;
-  }
-  .cal-event::before {
-    content: ''; position: absolute;
-    top: -18px; left: -18px; right: -18px; bottom: -18px;
-  }
+  .cal-weekdays, .cal-days { display: none; }
+  .cal-agenda { display: block; }
+  .cal-view-toggle { display: none; }
 }
 
 /* =====================================================

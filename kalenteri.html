@@ -45,7 +45,13 @@
         <div class="cal-header">
           <button class="cal-nav-btn" id="cal-prev">&#8249;</button>
           <span class="cal-month-title" id="cal-month-title"></span>
-          <button class="cal-nav-btn" id="cal-next">&#8250;</button>
+          <div class="cal-header-right">
+            <button class="cal-view-toggle" id="cal-view-toggle" aria-label="Vaihda näkymää">
+              <svg class="cal-toggle-icon cal-toggle-icon-agenda" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="3" width="3" height="2" rx=".5" fill="currentColor"/><rect x="7" y="3" width="11" height="2" rx=".5" fill="currentColor"/><rect x="2" y="9" width="3" height="2" rx=".5" fill="currentColor"/><rect x="7" y="9" width="11" height="2" rx=".5" fill="currentColor"/><rect x="2" y="15" width="3" height="2" rx=".5" fill="currentColor"/><rect x="7" y="15" width="11" height="2" rx=".5" fill="currentColor"/></svg>
+              <svg class="cal-toggle-icon cal-toggle-icon-grid" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="2" width="7" height="7" rx="1" fill="currentColor"/><rect x="11" y="2" width="7" height="7" rx="1" fill="currentColor"/><rect x="2" y="11" width="7" height="7" rx="1" fill="currentColor"/><rect x="11" y="11" width="7" height="7" rx="1" fill="currentColor"/></svg>
+            </button>
+            <button class="cal-nav-btn" id="cal-next">&#8250;</button>
+          </div>
         </div>
         <div class="cal-weekdays">
           <div>Ma</div><div>Ti</div><div>Ke</div><div>To</div><div>Pe</div><div>La</div><div>Su</div>
@@ -53,6 +59,7 @@
         <div class="cal-days" id="cal-days">
           <div class="event-list-empty" style="grid-column:1/-1">Ladataan tapahtumia...</div>
         </div>
+        <div class="cal-agenda" id="cal-agenda"></div>
       </div>
 
     </div>
